@@ -22,4 +22,5 @@ vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 -- show diagnostics
 vim.keymap.set("n", "<leader>sd", vim.diagnostic.open_float)
 
-
+-- autocomplete
+vim.keymap.set('i', '<C-Space>', '<C-x><C-o>', { desc = 'Omni completion' })
