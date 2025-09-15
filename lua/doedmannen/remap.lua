@@ -43,3 +43,6 @@ vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>qfl", vim.diagnostic.setqflist, { desc = "Open diagnostic quickfix list" })
 
+-- code actions aka codefixes (add missing import etc)
+vim.keymap.set("n", "<leader>cf", vim.lsp.buf.code_action, { desc = "Suggest fix" })
+
