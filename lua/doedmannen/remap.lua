@@ -48,11 +48,11 @@ vim.keymap.set("n", "<leader>cf", vim.lsp.buf.code_action, { desc = "Suggest cod
 
 -- Working with split buffers
 -- Quick splits in specific directions (intuitive)
-vim.keymap.set('n', '<leader>sl', '<C-w>v<C-w>l', { desc = 'Split right and focus' })
-vim.keymap.set('n', '<leader>sj', '<C-w>s<C-w>j', { desc = 'Split down and focus' })
-vim.keymap.set('n', '<leader>sk', '<C-w>s', { desc = 'Split up and focus' })
-vim.keymap.set('n', '<leader>sh', '<C-w>v', { desc = 'Split left and focus' })
-vim.keymap.set('n', '<leader>sq', '<C-w>o', { desc = 'Close all other splits' })
+vim.keymap.set('n', '<Right>', '<C-w>v<C-w>l', { desc = 'Split right and focus' })
+vim.keymap.set('n', '<Down>', '<C-w>s<C-w>j', { desc = 'Split down and focus' })
+vim.keymap.set('n', '<Up>', '<C-w>s', { desc = 'Split up and focus' })
+vim.keymap.set('n', '<Left>', '<C-w>v', { desc = 'Split left and focus' })
+vim.keymap.set('n', '<leader>sq', '<C-w>q', { desc = 'Close all other splits' })
 vim.keymap.set('n', '<leader>so', '<C-w>o', { desc = 'Close all other splits' })
 -- Using arrow keys with Ctrl resizing splits
 vim.keymap.set('n', '<C-S-Up>', ':resize -2<CR>', { desc = 'Decrease height' })
