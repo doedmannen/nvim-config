@@ -5,6 +5,7 @@ vim.opt.relativenumber = true
 
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
+
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
@@ -40,3 +41,21 @@ vim.diagnostic.config({
   update_in_insert = false,  -- Don't update while typing
 })
 -- end show inline diagnostics
+
+-- start split visibility improvements
+vim.opt.fillchars = {
+  horiz = '━',     -- Horizontal split line (thick)
+  horizup = '┻',   -- Horizontal line going up
+  horizdown = '┳', -- Horizontal line going down
+  vert = '┃',      -- Vertical split line (thick)
+  vertleft = '┫',  -- Vertical line going left
+  vertright = '┣', -- Vertical line going right
+  verthoriz = '╋', -- Vertical and horizontal crossing
+}
+vim.api.nvim_set_hl(0, 'WinSeparator', {
+  fg = '#E06C75',    -- Light blue - change to your preference
+  bg = 'NONE'
+})
+vim.opt.laststatus = 3  -- Global statusline (shows splits better)
+-- end split visibility improvements
+
