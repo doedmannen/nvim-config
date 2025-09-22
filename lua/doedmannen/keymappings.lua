@@ -51,20 +51,20 @@ vim.keymap.set("n", "<leader>cf", vim.lsp.buf.code_action, { desc = "Suggest cod
 
 -- Working with split buffers
 -- Quick splits in specific directions (intuitive)
-vim.keymap.set('n', '<Right>', '<C-w>v<C-w>l', { desc = 'Split right and focus' })
-vim.keymap.set('n', '<Down>', '<C-w>s<C-w>j', { desc = 'Split down and focus' })
-vim.keymap.set('n', '<Up>', '<C-w>s', { desc = 'Split up and focus' })
-vim.keymap.set('n', '<Left>', '<C-w>v', { desc = 'Split left and focus' })
-vim.keymap.set('n', '<leader>sq', '<C-w>q', { desc = 'Close all other splits' })
-vim.keymap.set('n', '<leader>so', '<C-w>o', { desc = 'Close all other splits' })
+vim.keymap.set('n', '<C-Right>', '<C-w>v<C-w>l', { desc = 'Split right and focus' })
+vim.keymap.set('n', '<C-Down>', '<C-w>s<C-w>j', { desc = 'Split down and focus' })
+vim.keymap.set('n', '<C-Up>', '<C-w>s', { desc = 'Split up and focus' })
+vim.keymap.set('n', '<C-Left>', '<C-w>v', { desc = 'Split left and focus' })
 -- Using arrow keys with Ctrl resizing splits
 vim.keymap.set('n', '<C-S-Up>', ':resize -2<CR>', { desc = 'Decrease height' })
 vim.keymap.set('n', '<C-S-Down>', ':resize +2<CR>', { desc = 'Increase height' })
 vim.keymap.set('n', '<C-S-Left>', ':vertical resize -2<CR>', { desc = 'Decrease width' })
 vim.keymap.set('n', '<C-S-Right>', ':vertical resize +2<CR>', { desc = 'Increase width' })
 -- Split navigation enhancement
-vim.keymap.set('n', '<C-Left>', '<C-w>h', { desc = 'Move to left split' })
-vim.keymap.set('n', '<C-Down>', '<C-w>j', { desc = 'Move to split below' })
-vim.keymap.set('n', '<C-Up>', '<C-w>k', { desc = 'Move to split above' })
-vim.keymap.set('n', '<C-Right>', '<C-w>l', { desc = 'Move to right split' })
-
+vim.keymap.set('n', '<Left>', '<C-w>h', { desc = 'Move to left split' })
+vim.keymap.set('n', '<Down>', '<C-w>j', { desc = 'Move to split below' })
+vim.keymap.set('n', '<Up>', '<C-w>k', { desc = 'Move to split above' })
+vim.keymap.set('n', '<Right>', '<C-w>l', { desc = 'Move to right split' })
+-- Close split window
+vim.keymap.set('n', '<leader>sq', '<C-w>q', { desc = 'Close all other splits' })
+vim.keymap.set('n', '<leader>so', '<C-w>o', { desc = 'Close all other splits' })
