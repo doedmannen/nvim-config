@@ -1,5 +1,5 @@
 require("doedmannen.lazy")
-require("doedmannen.remap")
+require("doedmannen.keymappings")
 require("doedmannen.set")
 require("doedmannen.quick-open-pr")
 require("doedmannen.goto-definition-with-import")
