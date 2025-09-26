@@ -4,6 +4,12 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live gr
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Find in Git files' })
+vim.keymap.set('n', '<leader>fe', function()
+  builtin.find_files({
+    prompt_title = "Find .env files",
+    find_command = { 'rg', '--files', '--glob', '*.env*' },
+  })
+end, { desc = 'Find .env files' })
 
 return {
   'nvim-telescope/telescope.nvim',
