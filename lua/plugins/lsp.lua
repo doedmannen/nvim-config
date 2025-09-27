@@ -4,6 +4,11 @@ return {
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
+    {
+      "j-hui/fidget.nvim",
+      tag = "v1.6.1",
+      opts = {}
+    }
   },
   config = function()
     require("mason").setup()
