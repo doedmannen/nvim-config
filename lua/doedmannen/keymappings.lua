@@ -44,7 +44,7 @@ vim.keymap.set('n', '<leader>c', ':noh<CR>')
 -- Write buffer
 vim.keymap.set('n', '<leader>w', ':w<CR>')
 -- Close buffer
-vim.keymap.set('n', '<leader>q', ':q<CR>')
+vim.keymap.set('n', '<leader>q', '<C-W>q')
 vim.keymap.set('n', '<leader>so', '<C-w>o', { desc = 'Close all other splits' })
 
 -- quickfix list
@@ -71,4 +71,8 @@ vim.keymap.set('n', '<Left>', '<C-w>h', { desc = 'Move to left split' })
 vim.keymap.set('n', '<Down>', '<C-w>j', { desc = 'Move to split below' })
 vim.keymap.set('n', '<Up>', '<C-w>k', { desc = 'Move to split above' })
 vim.keymap.set('n', '<Right>', '<C-w>l', { desc = 'Move to right split' })
+
+-- working with terminal splits
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('n', '<leader>t', ':term<CR>', { desc = 'Open terminal mode' })
 
