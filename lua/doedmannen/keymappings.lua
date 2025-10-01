@@ -43,7 +43,9 @@ vim.keymap.set('n', '<leader>c', ':noh<CR>')
 
 -- Write buffer
 vim.keymap.set('n', '<leader>w', ':w<CR>')
+-- Close buffer
 vim.keymap.set('n', '<leader>q', ':q<CR>')
+vim.keymap.set('n', '<leader>so', '<C-w>o', { desc = 'Close all other splits' })
 
 -- quickfix list
 vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz")
@@ -69,6 +71,3 @@ vim.keymap.set('n', '<Left>', '<C-w>h', { desc = 'Move to left split' })
 vim.keymap.set('n', '<Down>', '<C-w>j', { desc = 'Move to split below' })
 vim.keymap.set('n', '<Up>', '<C-w>k', { desc = 'Move to split above' })
 vim.keymap.set('n', '<Right>', '<C-w>l', { desc = 'Move to right split' })
--- Close split window
-vim.keymap.set('n', '<leader>sq', '<C-w>q', { desc = 'Close all other splits' })
-vim.keymap.set('n', '<leader>so', '<C-w>o', { desc = 'Close all other splits' })
