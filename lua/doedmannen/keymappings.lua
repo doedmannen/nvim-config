@@ -31,8 +31,8 @@ vim.keymap.set('i', '<C-Space>', '<C-x><C-o>', { desc = 'Omni completion' })
 vim.keymap.set("n", "J", "mzJ`z")
 
 -- move up/down half a page and center
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+-- vim.keymap.set("n", "<C-d>", "<C-d>zz")
+-- vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- move to next/previous search and center (and open any folds)
 vim.keymap.set("n", "n", "nzzzv")
@@ -71,3 +71,4 @@ vim.keymap.set('n', '<Left>', '<C-w>h', { desc = 'Move to left split' })
 vim.keymap.set('n', '<Down>', '<C-w>j', { desc = 'Move to split below' })
 vim.keymap.set('n', '<Up>', '<C-w>k', { desc = 'Move to split above' })
 vim.keymap.set('n', '<Right>', '<C-w>l', { desc = 'Move to right split' })
+
