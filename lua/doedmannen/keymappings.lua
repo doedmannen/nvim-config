@@ -76,3 +76,5 @@ vim.keymap.set('n', '<Right>', '<C-w>l', { desc = 'Move to right split' })
 vim.keymap.set('t', '<leader><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set('n', '<leader>t', ':term<CR>', { desc = 'Open terminal mode' })
 
+-- rename symbol
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { buffer = bufnr, desc = 'Rename symbol' })
