@@ -73,6 +73,6 @@ vim.keymap.set('n', '<Up>', '<C-w>k', { desc = 'Move to split above' })
 vim.keymap.set('n', '<Right>', '<C-w>l', { desc = 'Move to right split' })
 
 -- working with terminal splits
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('t', '<leader><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set('n', '<leader>t', ':term<CR>', { desc = 'Open terminal mode' })
 
