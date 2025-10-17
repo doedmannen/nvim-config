@@ -50,7 +50,7 @@ end
 vim.api.nvim_create_user_command('GitHubPRBlame', open_github_pr_from_blame, {})
 
 -- Key mappings
-vim.keymap.set('n', '<leader>gpr', open_github_pr_from_blame, { desc = 'Open GitHub PR from current line blame' })
+vim.keymap.set('n', '<leader>gopr', open_github_pr_from_blame, { desc = 'Open GitHub PR from current line blame' })
 
 return {
   open_github_pr_from_blame = open_github_pr_from_blame,
