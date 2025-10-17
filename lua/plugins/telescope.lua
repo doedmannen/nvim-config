@@ -7,7 +7,8 @@ vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Find in Git files
 vim.keymap.set('n', '<leader>fe', function()
   builtin.find_files({
     prompt_title = "Find .env files",
-    find_command = { 'rg', '--files', '--glob', '*.env*' },
+    find_command = { 'rg', '--files', '--glob', '*.env*', '--glob', '.github/**', '--glob', '.jest/**' },
+    hidden = true,
   })
 end, { desc = 'Find .env files' })
 
