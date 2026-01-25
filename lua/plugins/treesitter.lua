@@ -1,62 +1,63 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
     config = function()
-      require("nvim-treesitter.configs").setup({
-        -- A list of parser names, or "all"
-        ensure_installed = {
-          "vimdoc", "javascript", "typescript", "c", "lua", "rust",
-          "jsdoc", "bash", "go",
-        },
+      -- Compatibility shim for deprecated ft_to_lang (removed in Neovim 0.11+)
+      if not vim.treesitter.language.ft_to_lang then
+        vim.treesitter.language.ft_to_lang = vim.treesitter.language.get_lang
+      end
 
-        -- Install parsers synchronously (only applied to `ensure_installed`)
-        sync_install = false,
+      -- New nvim-treesitter API (v1.0+) - much simpler
+      require("nvim-treesitter").setup()
 
-        -- Automatically install missing parsers when entering buffer
-        -- Recommendation: set to false if you don"t have `tree-sitter` CLI installed locally
-        auto_install = true,
+      -- Install parsers (use :TSInstall for manual install)
+      local parsers = {
+        "vimdoc", "javascript", "typescript", "c", "lua", "rust",
+        "jsdoc", "bash", "go",
+      }
 
-        indent = {
-          enable = true
-        },
-
-        highlight = {
-          -- `false` will disable the whole extension
-          enable = true,
-          disable = function(lang, buf)
-            if lang == "html" then
-              print("disabled")
-              return true
-            end
-
-            local max_filesize = 100 * 1024 -- 100 KB
-            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-            if ok and stats and stats.size > max_filesize then
-              vim.notify(
-                "File larger than 100KB treesitter disabled for performance",
-                vim.log.levels.WARN,
-                {title = "Treesitter"}
-              )
-              return true
-            end
-          end,
-
-          -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-          -- Set this to `true` if you depend on "syntax" being enabled (like for indentation).
-          -- Using this option may slow down your editor, and you may see some duplicate highlights.
-          -- Instead of true it can also be a list of languages
-          additional_vim_regex_highlighting = { "markdown" },
-        },
+      -- Auto-install missing parsers
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function()
+          local ft = vim.bo.filetype
+          local lang = vim.treesitter.language.get_lang(ft) or ft
+          if vim.tbl_contains(parsers, lang) then
+            pcall(function()
+              if not pcall(vim.treesitter.language.inspect, lang) then
+                vim.cmd("TSInstall " .. lang)
+              end
+            end)
+          end
+        end,
       })
 
-      local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-      treesitter_parser_config.templ = {
-        install_info = {
-          url = "https://github.com/vrischmann/tree-sitter-templ.git",
-          files = {"src/parser.c", "src/scanner.c"},
-          branch = "master",
-        },
-      }
+      -- Treesitter highlighting is now built into Neovim 0.11+
+      -- Enable it for buffers with a parser
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function()
+          local buf = vim.api.nvim_get_current_buf()
+          local ft = vim.bo[buf].filetype
+
+          -- Skip html
+          if ft == "html" then return end
+
+          -- Skip large files
+          local max_filesize = 100 * 1024 -- 100 KB
+          local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
+          if ok and stats and stats.size > max_filesize then
+            vim.notify(
+              "File larger than 100KB treesitter disabled for performance",
+              vim.log.levels.WARN,
+              { title = "Treesitter" }
+            )
+            return
+          end
+
+          -- Start treesitter if parser available
+          pcall(vim.treesitter.start, buf)
+        end,
+      })
 
       vim.treesitter.language.register("templ", "templ")
     end
