@@ -17,20 +17,12 @@ return {
         "jsdoc", "bash", "go",
       }
 
-      -- Auto-install missing parsers
-      vim.api.nvim_create_autocmd("FileType", {
-        callback = function()
-          local ft = vim.bo.filetype
-          local lang = vim.treesitter.language.get_lang(ft) or ft
-          if vim.tbl_contains(parsers, lang) then
-            pcall(function()
-              if not pcall(vim.treesitter.language.inspect, lang) then
-                vim.cmd("TSInstall " .. lang)
-              end
-            end)
-          end
-        end,
-      })
+      -- Auto-install missing parsers on startup
+      for _, lang in ipairs(parsers) do
+        if not pcall(vim.treesitter.language.inspect, lang) then
+          vim.cmd("TSInstall! " .. lang)
+        end
+      end
 
       -- Treesitter highlighting is now built into Neovim 0.11+
       -- Enable it for buffers with a parser
