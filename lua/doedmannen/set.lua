@@ -59,3 +59,8 @@ vim.api.nvim_set_hl(0, 'WinSeparator', {
 vim.opt.laststatus = 3  -- Global statusline (shows splits better)
 -- end split visibility improvements
 
+-- Indent-based folding
+vim.opt.foldmethod = "indent"
+vim.opt.foldtext = ""            -- use underlying text with highlighting
+vim.opt.foldlevelstart = 99     -- start with all folds open
+
