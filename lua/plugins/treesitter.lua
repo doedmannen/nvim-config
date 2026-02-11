@@ -14,7 +14,7 @@ return {
       -- Install parsers (use :TSInstall for manual install)
       local parsers = {
         "vimdoc", "javascript", "typescript", "c", "lua", "rust",
-        "jsdoc", "bash", "go",
+        "jsdoc", "bash", "go", "svelte", "html", "css",
       }
 
       -- Auto-install missing parsers on startup
