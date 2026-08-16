@@ -78,3 +78,11 @@ vim.keymap.set('n', '<leader>t', ':term<CR>', { desc = 'Open terminal mode' })
 
 -- rename symbol
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { buffer = bufnr, desc = 'Rename symbol' })
+
+
+-- yank current buffer relative file path to global paste
+vim.keymap.set('n', '<leader>pa', function()
+  local path = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':.')
+  vim.fn.setreg('+', path)
+  vim.notify('Copied: ' .. path)
+end, { desc = 'Copy buffer path relative to cwd' })
