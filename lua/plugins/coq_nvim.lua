@@ -18,6 +18,9 @@ return {
     -- - etc
   },
   init = function()
+    -- coq v2 asserts coroutine.running() == nil, which fails on LuaJIT built with
+    -- Lua 5.2 compat (main thread returns thread, true). Remove once fixed upstream.
+    vim.g.coq_v1 = true
     vim.g.coq_settings = {
         auto_start = 'shut-up', -- if you want to start COQ at startup
         -- Your COQ settings here
